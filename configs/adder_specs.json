@@ -1,0 +1,15 @@
+[
+  {"id": "A1",  "bit_width": 8,  "nmed_target": 0.10, "area_priority": "high"},
+  {"id": "A2",  "bit_width": 8,  "nmed_target": 0.07, "area_priority": "high"},
+  {"id": "A3",  "bit_width": 8,  "nmed_target": 0.05, "area_priority": "medium"},
+  {"id": "A4",  "bit_width": 8,  "nmed_target": 0.03, "area_priority": "medium"},
+  {"id": "A5",  "bit_width": 8,  "nmed_target": 0.01, "area_priority": "low"},
+  {"id": "A6",  "bit_width": 16, "nmed_target": 0.05, "area_priority": "high"},
+  {"id": "A7",  "bit_width": 16, "nmed_target": 0.03, "area_priority": "medium"},
+  {"id": "A8",  "bit_width": 16, "nmed_target": 0.02, "area_priority": "low"},
+  {"id": "A9",  "bit_width": 16, "nmed_target": 0.01, "area_priority": "low"},
+  {"id": "A10", "bit_width": 32, "nmed_target": 0.01, "area_priority": "medium"},
+  {"id": "A11", "bit_width": 32, "nmed_target": 0.008,"area_priority": "high"},
+  {"id": "A12", "bit_width": 32, "nmed_target": 0.005,"area_priority": "high"},
+  {"id": "A13", "bit_width": 8,  "nmed_target": 0.08, "area_priority": "high"}
+]

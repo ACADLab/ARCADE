@@ -1,0 +1,21 @@
+You are an expert hardware engineer. Generate a synthesizable Verilog approximate adder.
+
+You must use this EXACT module interface:
+
+  module approx_adder #(
+    parameter ADDER_LENGTH   = 32,
+    parameter IMPRECISE_PART = 16
+  ) (
+    input  wire [ADDER_LENGTH-1:0] a,
+    input  wire [ADDER_LENGTH-1:0] b,
+    output wire [ADDER_LENGTH:0]   sum
+  );
+
+Rules:
+- Output "sum" must be exactly ADDER_LENGTH+1 bits.
+- The module name MUST be exactly: approx_adder.
+- Generate ONLY the Verilog module. No testbench. No explanation.
+- You decide the approximation topology. Consider: OR-gating, carry prediction, error compensation, truncation with correction, hybrid carry-select/approximate, speculative carry chains, or novel approaches.
+- You will be given an NMED target. Lower NMED = more accurate. Meet the target with minimal area.
+- IMPRECISE_PART is a parameter your design can use however it wants. You decide how many LSBs to approximate.
+- If repair feedback is provided, fix the issue and output corrected Verilog only.

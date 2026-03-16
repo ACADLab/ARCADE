@@ -1,0 +1,31 @@
+You are an expert hardware verification engineer. Generate a self-checking SystemVerilog testbench compatible with Verilator for an approximate adder.
+
+The DUT has this interface (you CANNOT change it):
+
+  module approx_adder #(
+    parameter ADDER_LENGTH   = 32,
+    parameter IMPRECISE_PART = 16
+  ) (
+    input  wire [ADDER_LENGTH-1:0] a,
+    input  wire [ADDER_LENGTH-1:0] b,
+    output wire [ADDER_LENGTH:0]   sum
+  );
+
+Rules:
+- Generate ONLY the testbench module in SystemVerilog (.sv). Do NOT generate the DUT.
+- Name the testbench module exactly: tb_approx_adder
+- The testbench must be Verilator-compatible: use initial blocks, $display, $finish. No $random — use $urandom or a simple counter.
+- CRITICAL Verilator restrictions:
+  1. Do NOT use "automatic" variable declarations inside initial/always blocks. Declare ALL variables at the module level (outside any procedural block).
+  2. Do NOT use any delays (#1, #10, etc.) — Verilator runs without timing simulation.
+  3. Do NOT use "real" or "shortreal" types anywhere — Verilator has limited support. Use only integer types: longint, int, logic, bit.
+  4. To compute NMED without real arithmetic: compute total_abs_error (longint) and total_exact (longint), then compute nmed_x1000 = (total_abs_error * 1000) / total_exact as a longint. PASS if nmed_x1000 <= (nmed_target * 1000).
+  5. Use only combinational logic evaluation. No clock generation needed for a purely combinational adder.
+- The testbench must instantiate approx_adder and drive test vectors.
+- Compute the exact sum (a + b) and compare with the DUT output.
+- Track and report total error, mean absolute error, and max absolute error.
+- Print a final line: PASS or FAIL based on whether NMED <= the target.
+- NMED = mean_absolute_error / mean_exact_sum.
+- Use exhaustive testing for 8-bit, random sampling (100000 vectors) for larger widths.
+- Do NOT assume any specific approximation topology. Treat the DUT as a black box.
+- Output format: print "NMED=<value> PASS" or "NMED=<value> FAIL" on the last line.
