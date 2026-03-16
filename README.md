@@ -33,11 +33,15 @@ Specs are defined in `configs/adder_specs.json` (13 specs: 8/16/32-bit, varying 
 
 ## Setup
 
+Use **uv** to create the virtual environment and install in editable mode (recommended):
+
 ```bash
 cd ARCADE
 uv venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
 uv pip install -e .
 ```
+
+Alternatively, use `python -m venv .venv` and `pip install -e .`.
 
 ### API keys (required for LLM calls)
 
@@ -86,11 +90,12 @@ ARCADE/
 
 ## Run
 
-### Smoke test (single spec)
+### Quick test (single spec, one shot)
 
 ```bash
-python -m src.orchestrator --mode smoke --spec-id A1
+python -m src.orchestrator --mode E1 --spec-id A1 --limit 1
 ```
+(Requires an API key and Verilator.)
 
 ### Single mode, few specs (NMED only; no flow required)
 
